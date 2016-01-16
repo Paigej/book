@@ -1,20 +1,18 @@
 {
   "bio" : {
 
-    "favorite_foods" : [ "steak", "break" ] ,
 
-    "work_experience" : {
-
-    	"VictorOps" : ["Software Engineering Intern"],
-    	"Zayo Group" : ["Application Development Intern"]
-
-    },
-
-    "Hard Skills" : {
-
-    	"Proficient In:" : [ "Javascript", "C++"],
-    	"Familiar With:" : [ "Python" , "Arduino"]
-    }
+    "education" : [
+    	{"name": "University of Colorado | Bouler",  "timeframe":"2017", "GPA": "3.49" }
+    ],
+    "work_experience" : [
+    	{"name": "VictorOps",  "title":"Software Engineering Intern", "timeframe": "October 2015-Present", "software": "Aura Framework and Salesforce" },
+      {"name": "Zayo Group",  "title":"Application Development Intern", "timeframe": "May 2015-August 2015", "software": "Aura Framework and Salesforce" }
+    ],
+    "hard_skills" : [
+      {"ability": "Proficient In", "language": ["Javascript ", "C++ "]},
+      {"ability": "Familiar With", "language": [ "Python " , "Arduino "]}
+    ]
   },
     "todos" : {
       "tasks" : [
