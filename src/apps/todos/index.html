@@ -41,7 +41,15 @@
         ref.child('todos/tasks').once('value', function(snapshot){
           var tasks = snapshot.val()
           tasks.forEach(function(task){
-            $('#tasks').append('<div class="row"><div class="col s12 m20"><div class="card blue-grey darken-1"><div class="card-content white-text"><span class="card-title">' + task.name + '</span><p>Priority: ' + task.priority + '<br>Type: ' + task.type + '<br>Deadline: ' + task.deadline + '</p></div></div></div></div>')
+            color = ''
+            if(task.priority=='high'){
+              color = 'red'
+            } else if(task.priority=='medium'){
+              color = 'yellow'
+            } else {
+              color = 'green'
+            }
+            $('#tasks').append('<div class="row"><div class="col s12 m20"><div class="card ' + color + '"><div class="card-content black-text"><span class="card-title">' + task.name + '</span><p>Priority: ' + task.priority + '<br>Type: ' + task.type + '<br>Deadline: ' + task.deadline + '</p></div></div></div></div>')
           })
         })
       </script>
