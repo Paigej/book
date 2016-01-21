@@ -1,0 +1,32 @@
+{
+  "bio" : {
+
+
+    "education" : [
+    	{"name": "University of Colorado | Bouler",  "timeframe":"2017", "GPA": "3.49" }
+    ],
+    "work_experience" : [
+    	{"name": "VictorOps",  "title":"Software Engineering Intern", "timeframe": "October 2015-Present", "software": "Aura Framework and Salesforce" },
+      {"name": "Zayo Group",  "title":"Application Development Intern", "timeframe": "May 2015-August 2015", "software": "Aura Framework and Salesforce" }
+    ],
+    "hard_skills" : [
+      {"ability": "Proficient In", "language": ["Javascript ", "C++ "]},
+      {"ability": "Familiar With", "language": [ "Python " , "Arduino "]}
+    ]
+  },
+    "todos" : {
+      "tasks" : [
+      	{"name": "eat", "priority": "high", "type": "necessity", "deadline": "three times a day"},
+          {"name": "sleep", "priority": "medium", "type": "necessity", "deadline": "everyday at 11pm"},
+          {"name": "brush teeth", "priority": "high", "type": "necessity", "deadline": "twice a day"},
+          {"name": "attend class", "priority": "high", "type": "academic", "deadline": "4pm"},
+          {"name": "meet partners", "priority": "medium", "type": "academic", "deadline": "5pm"},
+          {"name": "homework", "priority": "high", "type": "academic", "deadline": "Friday"},
+          {"name": "relax", "priority": "high", "type": "optional", "deadline": "none"},
+          {"name": "sleep", "priority": "medium", "type": "necessity", "deadline": "everyday at 11pm"},
+          {"name": "work", "priority": "high", "type": "career", "deadline": "3pm"},
+          {"name": "call mom", "priority": "high", "type": "necessity", "deadline": "7pm"},
+          {"name": "get stoked", "priority": "high", "type": "mostly optional", "deadline": "All day everyday"}
+  	]
+  }
+}
