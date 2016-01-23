@@ -41,17 +41,23 @@
 
       <script>
 
-        $('#submit').click(function(){
-          console.log('the submit button is clicked')
+      var ref = new Firebase('https://paige-book.firebaseio.com/')
+      var emailRef = ref.child("subscribers")
 
-          // TODO: add code to submit an email address to your own Firebase
-
+      $('#submit').click(function(){
+        console.log('the submit button is clicked')
+        var eAddress = $('#email').val()
+        emailRef.push({
+          email: eAddress
         })
-
-
-        // TODO: add code to pull emaill addresses from your own Firebase,
-        // and populate "#emails" with these email addresses
-
+    })
+        ref.child('subscribers').on('value', function(snapshot){
+          $('#emails').empty();
+          snapshot.forEach(function(email){
+          emailS = email.child("email").val();
+            $('#emails').append('<li class="collection-item">' + emailS + '</li>')
+           })
+          })
 
       </script>
     </body>
