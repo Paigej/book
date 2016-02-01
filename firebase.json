@@ -1,9 +1,9 @@
 {
-  "firebase": "paige-book",
+  "firebase":"paige-book",
   "public": "build",
   "ignore": [
     "firebase.json",
     "**/.*",
     "**/node_modules/**"
   ]
-}
+  }
