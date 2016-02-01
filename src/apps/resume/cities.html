@@ -25,22 +25,44 @@
       <div class="container">
 
         <h1>My Favoirte Cities</h1>
-        <div id="cities"></div>
         <div id="map" style="height:500px"></div>
+        <div id="cities"></div>
+
       </div>
 
       <script>
 
 // create a firebase reference to the root
-var weatherRef = new Firebase('https://publicdata-weather.firebaseio.com/austin');
+var weatherRef = new Firebase('https://publicdata-weather.firebaseio.com');
 
-var data
 
-// read data from only once
-weatherRef.once('value', function(snapshot){
+// read data from on "responsive"
+weatherRef.on('value', function(snapshot){
+
+  markersLayerGroup.clearLayers()
+  $('#cities').empty()
+
   var city = snapshot.val()
-  mapCity(city)
-  displayCity(city, 'austin')
+
+  var denver = city['denver']
+  var seattle = city['seattle']
+  var portland = city['portland']
+  var austin = city['austin']
+  var boston = city['boston']
+
+  mapCity(denver, 'Denver')
+  mapCity(seattle, 'Seattle')
+  mapCity(portland, 'Portland')
+  mapCity(austin, 'Austin')
+  mapCity(boston, 'Boston')
+
+  displayCity(denver, 'Denver')
+  displayCity(seattle, 'Seattle')
+  displayCity(portland, 'Portland')
+  displayCity(austin, 'Austin')
+  displayCity(boston, 'Boston')
+
+
 })
 
 var attributionText = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a       href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>'
@@ -60,23 +82,24 @@ var markersLayerGroup = L.layerGroup()
 markersLayerGroup.addTo(map)
 
 // visualize cities on the map
-function mapCity(city){
+function mapCity(city, name){
+
+
   console.log('mapCity', city)
   var latlng = [city.latitude, city.longitude]
+
   var circle = L.circle(latlng, 10, {
       color: 'red',
       fillColor: '#f03',
       fillOpacity: 0.5
-  }).bindLabel('Austin')
-  
+
+  }).bindLabel(name+'<li class="collection-item">'+ city.currently.summary + '</li><li class="collection-item"> Temperature: ' + city.currently.apparentTemperature + '˚F</li><li class="collection-item">Humidity: ' + city.currently.humidity + '%</li><li class="collection-item">Wind Speed: ' + city.currently.windSpeed + ' mph</li>')
   markersLayerGroup.addLayer(circle)
 }
 
 function displayCity(city, name){
   console.log('displayCity', city)
-  $('#cities').append('<li class="collection-item">' + name +
-    ' humidity = ' +
-    JSON.stringify(city.currently) + '</li>')
+  $('#cities').append('<div class = "card blue darken-4">' + '<div class = "card-content white-text">' + '<span class ="card-title">' + name + '</span>' + '<ul>' + '<li>' + '<b>' + 'Summary: ' + '</b>' + city.currently.summary + '</li>' + '<li>' + '<b>' + 'Current temperature: ' + '</b>' + city.currently.temperature + ' degrees fahrenheit' + '</li>' + '<li>' + '<b>' + 'Wind speed: ' + '</b>' + city.currently.windSpeed + ' mph' + '</li>' + '<li>' + '<b>' + 'Relative humidity: ' + '</b>' + city.currently.humidity + '</li>' + '<li>' + '<b>' + 'Visibility: ' + '</b>' + city.currently.visibility + ' miles' + '</li>' + '</ul>' + '</div>' + '</div>')
 }
 
       </script>
