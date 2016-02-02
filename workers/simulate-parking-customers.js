@@ -29,37 +29,41 @@ function simulate(){
   // simulate this person entering
   enter(person)
 
+
   // simulate this person leaving after 'duration' seconds
   setTimeout(function(){
     leave(person)
   }, duration * 1000)
 
 }
-
 function enter(person){
   console.log('enter', person)
-  // TODO: put this person in the Firebase
-  // var ref = new Firebase('your-firebase-url')
-  // ...
+
+  var ref = new Firebase('https://bbbsg.firebaseio.com/');
+  var userRef = ref.child(person.name);
+
+  userRef.set({
+    lat: person.lat,
+    lon: person.lon,
+    name: person.name
+  });
 }
 
 function leave(person){
   console.log('leave', person)
-  // TODO: remove this person from the Firebase
-  // var ref = new Firebase('your-firebase-url')
-  // ...
+  var ref = new Firebase('https://bbbsg.firebaseio.com/')
+  var userRef = ref.child(person.name);
+  userRef.remove();
 }
 
 
 function clear(){
-  // TODO: remove all people from the Firebase
-  // var ref = new Firebase('your-firebase-url')
-  // ...
+  var ref = new Firebase('https://bbbsg.firebaseio.com/')
+  ref.remove()
 }
-
-
 // clear the firebase, so that the simulation always starts from no one
 clear()
+
 
 // run each second
 setInterval(simulate, 2000)
