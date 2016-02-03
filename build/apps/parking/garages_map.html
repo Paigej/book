@@ -45,13 +45,108 @@
 
 
       <script>
+
+
+
+var busRef = new Firebase('https://publicdata-transit.firebaseio.com/sf-muni');
+
 // create a firebase reference to the root
-var ref = new Firebase('https://publicdata-parking.firebaseio.com');
+var parkRef = new Firebase('https://publicdata-parking.firebaseio.com');
 var data
+
+var userRef = new Firebase('https://bbbsg.firebaseio.com/')
+
+userRef.on('value', function(snapshot){
+  users = snapshot.val()
+  markersLayerGroupUser.clearLayers()
+  addUsers(users);
+})
+
+function addUsers(user){
+  _.forEach(user, function(users){
+    var latlng = [users.lat, users.lon]
+    var circle = L.circle(latlng, 100, {
+      color: 'blue',
+      fillColor: 'black',
+      fillOpacity: 0.5
+    }).bindLabel(users.name)
+    // add the circle layer to the markers layer group
+    markersLayerGroupUser.addLayer(circle)
+
+  })
+
+}
+
+
+busRef.child('vehicles').on('value', function(snapshot){
+  buses = snapshot.val()
+  markersLayerGroupBus.clearLayers()
+  generateBus(buses);
+})
+
+/*
+var dataBus
 // read data from the location san_francisco/garages, only once
-ref.child('san_francisco/garages').on('value', function(snapshot){
+function generateBus(dataBus){
+    console.log('dataBus is loaded', dataBus)
+    _.forEach(dataBus, function(bus){
+      var latlng = [bus.lat, bus.lon]
+      if (bus.vtype == 'bus'){
+      //  bus_val = parseInt(bus.id)
+        var busIcon = L.Icon.Default.extend({
+        options: {
+          iconUrl: 'buses.png',
+          iconSize: [15,15],
+          popupAnchor: [0, 0],
+        }
+        })
+        var newBus = new busIcon();
+
+        var mark = L.marker(latlng, {icon: newBus}).addTo(map);
+        markersLayerGroupBus.addLayer(mark)
+    }
+  })
+}
+*/
+
+
+
+function generateBus(bus_id){
+  busRef.child('vehicles').on('value', function(snapshot){
+    data1 = snapshot.val()
+    drawBuses(data1, bus_id);
+  })
+}
+function drawBuses(bus_data, bus_id){
+  //drawMap();
+  console.log("method called");
+  _.forEach(bus_data, function(bus){
+    var latlng = [bus.lat, bus.lon]
+    var id = bus.id
+    if (bus.vtype == 'bus'){
+      bus_val = parseInt(bus.id);
+      var busIcon = L.icon({
+      iconUrl: 'buses.png',
+      iconSize: [10, 10],
+      popupAnchor: [0, 0]
+    })
+       if (bus_val >= bus_id-2000 && bus_val <= bus_id){
+      var mark =  L.marker(latlng, {icon: busIcon}).bindLabel("Bus ID: "+id).addTo(map)
+        markersLayerGroupBus.addLayer(mark)
+        }
+
+    }
+  })
+}
+
+//drawMap();
+generateBus(6000);
+
+
+// read data from the location san_francisco/garages, only once
+parkRef.child('san_francisco/garages').on('value', function(snapshot){
   data = snapshot.val()
-  console.log('data is loaded', data)
+  //console.log('data is loaded', data)
   var garages = _.filter(data, function(d){
       return _.has(d, 'open_spaces')
   })
@@ -67,19 +162,23 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: 'pk.eyJ1IjoiZG91Ymxlc2hvdyIsImEiOiJjaWZ5Y3B1eTE1MHRidWRtMG9uZXluajg4In0.u5ONW27Ly5cU7M5KYi6Y9Q'
 }).addTo(map)
 // create a layer group to hold all the markers
-var markersLayerGroup = L.layerGroup()
+var markersLayerGroupUser = L.layerGroup()
+var markersLayerGroupGarage = L.layerGroup()
+var markersLayerGroupBus = L.layerGroup()
 // add the makers layer group to the map
-markersLayerGroup.addTo(map)
+markersLayerGroupUser.addTo(map)
+markersLayerGroupGarage.addTo(map)
+markersLayerGroupBus.addTo(map)
 //marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 // visualize garages on a map
 function drawGarages(garages){
   // clear all existing markers (if any)
-  markersLayerGroup.clearLayers()
+  markersLayerGroupGarage.clearLayers()
     var minCap = Number.MAX_VALUE;
     var maxCap = Number.MIN_VALUE;
     var totalSpots = 0;
     var gargageCount = 0;
-    console.log("Garages: " + garages)
+    //console.log("Garages: " + garages)
   _.forEach(garages, function(garage){
     // var points = garage.points
     // var latlng = [points[0], points[1]]
@@ -93,11 +192,7 @@ function drawGarages(garages){
     }
     totalSpots += spots;
   })
-  console.log("Max: " + maxCap + "Min: " + minCap)
-
-
-
-
+//  console.log("Max: " + maxCap + "Min: " + minCap)
 
   _.forEach(garages, function(garage){
 
@@ -149,9 +244,11 @@ function drawGarages(garages){
     }).bindLabel(name + " contains " + spots + " spots.")
     .bindPopup(onClickData)
     // add the circle layer to the makers layer group
-    markersLayerGroup.addLayer(circle)
+    markersLayerGroupGarage.addLayer(circle)
   })
 }
+
+
       </script>
     </body>
   </html>
