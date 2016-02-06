@@ -32,41 +32,33 @@
   </nav>
 
   <div class="container flow-text">
-  <p>Date: 02-01-2016</p>
-<h1 id="hackathon-real-time-map-mashup">Hackathon: Real-time Map Mashup</h1>
-<h2 id="objective">Objective</h2>
-<p>Put more real-time map data on your team’s parking map.</p>
-<h2 id="real-time-transit">Real-time Transit</h2>
-<p>Use the <a href="https://www.firebase.com/docs/open-data/transit.html">Transit Open Datasets</a>
-to plot the real-time locations of bus vehicles on your parking app’s map.
-The Firebase location corresponding to the city of San Francisco is <a href="https://publicdata-transit.firebaseio.com/sf-muni">sf-muni</a>.</p>
-<h2 id="real-time-customer-locations">Real-time Customer Locations</h2>
-<p>Write a sever-side script to simulate the behaviors of the customers of your app
-who are entering and leaving the app. On your parking apps’ map, display these
-simulated customers in real-time.</p>
-<p>A skeleton script is provided at <code>/workers/simulate-parking-customers.js</code>.</p>
-<p>You need to first install some NPM packages by</p>
-<p><code>npm install</code></p>
-<p>To run the worker, assuming you are at the root of your book, do</p>
-<p><code>node workers/simulate-parking-customers.js</code></p>
-<p>You should see output like this:</p>
-<p><img src="screen.png" alt="screen"></p>
-<h3 id="hints">Hints</h3>
+  <h1 id="book">Book</h1>
+<p>Everything I’ve learned from UCDD 2 - Spring 2016.</p>
+<h2 id="apps">Apps</h2>
 <ul>
-<li>Decide on a Firebase location to store a list of current customers.</li>
-<li>Use the randomly generated name as the key.</li>
-<li>Implement <code>enter()</code> and <code>leave()</code> by adding the appropriate Firebase API
-calls to write and delete customers at that Firebase location of your choice.</li>
-<li>Feel free to adjust the simulator parameters such as the duration.</li>
-<li>On the front-end side (i.e., <a href="/apps/parking/garages_map.html">/apps/parking/garages_map.html</a>), subscribe to the same Firebase location so that your
-app can always show the active customers (those who have entered but have not left).</li>
+<li><a href="apps/todos/">ToDos</a></li>
+<li><a href="apps/resume/">Resume</a><ul>
+<li><a href="apps/resume/react">ReactJS</a></li>
 </ul>
-<h3 id="submission">Submission</h3>
+</li>
+<li><a href="apps/parking/">Parking</a><ul>
+<li><a href="apps/parking/react">ReactJS</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="learning">Learning</h2>
 <ul>
-<li>Use <a href="http://recordit.co/">http://recordit.co/</a> to create a demo as an animated
-gif. Make sure your demo clearly shows three types of real-time activities:
-garages, buses, and customers.</li>
-<li>Post it to <code>#demo</code> on Slack, along with your team members’ names.</li>
+<li><a href="learning/week4">Week 4</a> <span class="chip red">NEW</span></li>
+<li><a href="learning/week3">Week 3</a></li>
+<li><a href="learning/week2">Week 2</a></li>
+<li><a href="learning/week1">Week 1</a></li>
+<li><a href="learning/intro">Intro</a></li>
+</ul>
+<h2 id="hackathons">Hackathons</h2>
+<ul>
+<li><a href="hackathons/02-01">02-01</a> <span class="chip red">NEW</span></li>
+<li><a href="hackathons/01-25">01-25</a></li>
+<li><a href="hackathons/01-18">01-18</a></li>
 </ul>
 
   </div>

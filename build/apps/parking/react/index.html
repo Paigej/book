@@ -14,6 +14,16 @@
     <script src="lib/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<style>
+  html {
+      background: url(newyork.jpg) no-repeat center fixed;
+    }
+</style>
+
+
+
+
   </head>
   <body>
     <div class="container">
@@ -49,8 +59,10 @@
       var GARAGE_NAME = 'Golden Gateway Garage'
 
       // data about the team
-      // TODO: add more attributes (lastname, github repo link)
-      var members = [{name: 'John'}, {name: 'Mary'}]
+      var members = [ {name: 'Callan Fisher', github: 'https://github.com/CallanFisher'},
+                     {name: 'Paige Jonhson', github: 'https://github.com/Paigej'},
+                     {name: 'Zhongzhi Zhang', github: 'https://github.com/ZhongzhiZhang'},
+                     {name: 'Chris Fanning', github: 'https://github.com/clfchris'}]
 
       ReactDOM.render(
         <MyComponents.Team members={members}/>,
@@ -68,9 +80,7 @@
             <MyComponents.Garage garage={garages[GARAGE_NAME]}/>,
             $('#garage').get(0)
           )
-
         })
-
     </script>
   </body>
 </html>

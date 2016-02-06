@@ -2,7 +2,7 @@ MyComponents.NavBar = React.createClass({
   render: function() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper blue darken-4">
         <a href="#" className="brand-logo">Garage Viewer</a>
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li><a href="sass.html">Sass</a></li>
@@ -10,7 +10,9 @@ MyComponents.NavBar = React.createClass({
           <li><a href="collapsible.html">JavaScript</a></li>
         </ul>
         </div>
+        <div></div>
       </nav>
+
     );
   }
 });
