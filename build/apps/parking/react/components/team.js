@@ -13,7 +13,6 @@ MyComponents.Team = React.createClass({
 
 
     return (
-  
       <div className="card blue darken-4">
         <div className="card-content">
           <div>

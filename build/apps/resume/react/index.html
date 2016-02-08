@@ -7,23 +7,45 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
 
     <script src="lib/react.js"></script>
     <script src="lib/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  </head>
-  <body>
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<style>
+
+  html {
+      background: url(background.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    body{
+      background: transparent;
+    }
+
+  </style>
+
+<body>
+
+  <div id="navbar"></div>
+
     <div class="container">
-      <div id="navbar"></div>
+
 
       <h2 id="about-heading">About Me</h2>
       <div id="about"></div>
 
       <h2 id="skills-heading">Skills</h2>
       <div id="skills"></div>
+
 
       <h2 id="tasks-heading">Tasks</h2>
       <div id="tasks"></div>
@@ -58,30 +80,64 @@
         $('#about').get(0)
       );
 
+      var iRef = new Firebase('https://paige-book.firebaseio.com/')
+      iRef.child('bio/skills').once('value', function(snapshot){
+        var skills = snapshot.val()
+
+        ReactDOM.render(
+          <MyComponents.SkillList skills={skills}/>,
+          $('#skills').get(0)
+        );
+      })
+
       // TODO: load tasks data from Firebase
-      var tasks = [{name: 'go to the movies'}, {name: 'sleep'}]
+      var tRef = new Firebase('https://killinit-base.firebaseio.com')
+      var tasksList = []
+      var markAsCompleted = function(key){
+        tRef.child('todos/tasks').child(key).update({
+          priority: "completed"
+        })
+      }
+      // read data from the location todos/tasks, only once
+      tRef.child('todos/tasks').once('value', function(snapshot){
+        var tasks = snapshot.val()
+        for (var taskNumber in tasks){
+          var task = tasks[taskNumber]
+          if (task.assigned =='Paige'){
+              tasksList.push(task)
+          }
+          else{}
+        }
 
       ReactDOM.render(
-        <MyComponents.TaskList tasks={tasks}/>,
+        <MyComponents.TaskList tasks={tasksList}/>,
         $('#tasks').get(0)
       );
 
-      // TODO: load city weather data from Firebase
-      var cities = [{name: 'Austin'}, {name: 'New York'}]
-
-      ReactDOM.render(
-        <MyComponents.CityList cities={cities}/>,
-        $('#cities').get(0)
-      );
+  })
 
 
-      // TODO: load skill data from Firebase
-      var skills = [{name: 'JavaScript', years: 5}, {name: 'Karate', years: 2}]
+    // TODO: load city weather data from Firebase
+      var wRef = new Firebase('https://publicdata-weather.firebaseio.com');
+      wRef.once('value', function(snapshot){
+        var citiesRef = snapshot.val()
+        var cities = []
 
-      ReactDOM.render(
-        <MyComponents.SkillList skills={skills}/>,
-        $('#skills').get(0)
-      );
+         for(var name in citiesRef){
+            if (name == "denver"|name == "seattle"|name == "portland"|name == "austin"|name == "boston"){
+            var city = citiesRef[name]
+             city.name = name
+             //city.value = name.currently
+             cities.push(city)
+           }
+
+         }
+        console.log(cities)
+        ReactDOM.render(
+          <MyComponents.CityList cities={cities}/>,
+          $('#cities').get(0)
+        );
+      })
 
     </script>
   </body>

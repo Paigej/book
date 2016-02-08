@@ -9,16 +9,20 @@
     	{"name": "VictorOps",  "title":"Software Engineering Intern", "timeframe": "October 2015-Present", "software": "Aura Framework and Salesforce" },
       {"name": "Zayo Group",  "title":"Application Development Intern", "timeframe": "May 2015-August 2015", "software": "Aura Framework and Salesforce" }
     ],
-    "hard_skills" : [
-      {"ability": "Proficient In", "language": ["Javascript ", "C++ "]},
-      {"ability": "Familiar With", "language": [ "Python " , "Arduino "]}
-    ]
-  },
+    "skills" : [
+        {"ability": "Proficient In", "type": ["Javascript ", "C++ "]},
+        {"ability": "Familiar With", "type": [ "Python " , "Arduino "]},
+        {"ability": "Mentorship", "type": "Mentor for the Engineering Honors Program"},
+        {"ability": "Public Speaking", "type": "Placed top four in the National Competition for FFA"},
+        {"ability": "Teamwork", "type": "Worked with three other interns on the project at Zayo"}
+      ],
+
+
 
     "subscribers": {
       "emails" : [
        {"address": "test" }
      ]
-
+}
 }
 }

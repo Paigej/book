@@ -10,7 +10,6 @@ MyComponents.NavBar = React.createClass({
           <li><a href="collapsible.html">JavaScript</a></li>
         </ul>
         </div>
-        <div></div>
       </nav>
 
     );

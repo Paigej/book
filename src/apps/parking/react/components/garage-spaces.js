@@ -7,7 +7,6 @@ MyComponents.GarageSpaces = React.createClass({
         <li>Total Spaces: {this.props.total}</li>
         </div>
       </div>
-
     );
   }
 });
