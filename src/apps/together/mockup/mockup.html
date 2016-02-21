@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>LetsDJ</title>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<style>
+
+  html {
+      background: url(background.jpg) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    body{
+      background: transparent;
+    }
+  </style>
+<body>
+
+  <nav>
+    <div class="nav-wrapper blue darken-4">
+      <a href="#" class="brand-logo left">Let's DJ</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="valign-wrapper">
+      <div class= "container center">
+        <h1 class="valign">Getting Location</h1>
+
+        <!--Spinner Code-->
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+            <div class="spinner-layer spinner-red">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+            <div class="spinner-layer spinner-yellow">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+            <div class="spinner-layer spinner-green">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class = "row">
+          <div class="card grey col s4 offset-s4">
+          <form class="col s3">
+              <div class="input-field col s3 l3" >
+                <i class="material-icons prefix">account_circle</i>
+                <input type="text" placeholder="User Name:" id="user" style="width: 300px;" maxlength="50"><br>
+              </div>
+          </form>
+          <a class="waves-effect blue darken-3 btn col s3 offset-s5" href="./letsdj.html">Login</a>
+        </div>
+      </div>
+        </div>
+    </div> <!--end of container-->
+
+
+</body>
+
+
+
+</html>
