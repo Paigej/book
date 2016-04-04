@@ -20,12 +20,12 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>JUKEBOX</title>
+    <title>JUKEBOX admin</title>
   </head>
 
   <style>
     html {
-      background: url(images/background.jpg) no-repeat center center fixed;
+      background: url(../images/background.jpg) no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -37,15 +37,9 @@
 
     #scrollable {
       height: 500px;
-      overflow-y: scroll;
-      position: relative;
-      bottom: 0;
+      overflow: scroll;
     }
-
-
   </style>
-
-
 
   <body>
 
@@ -58,9 +52,13 @@
             <h2 class="grey-text text-lighten-4">Rocknroll</h2>
           </div>
           <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Individual Extention:</h5>
+            <h5 class="white-text">Team Members</h5>
             <ul>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/Huriphoonado">Willie Payne</a></li>
               <li><a class="grey-text text-lighten-3" href="https://github.com/Paigej">Paige Johnson</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/aokeson">Alex Okeson</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/TylerTafoya">Tyler Tafoya</a></li>
+              <li><a class="grey-text text-lighten-3" href="https://github.com/huiminlu814">Hui-Min Lu</a></li>
             </ul>
           </div>
         </div>
@@ -73,18 +71,14 @@
   <script>
     MyComponents = {} // Global object where each property is a reference to a component class
   </script>
-
-  <script>
-    $("#scrollable").scrollTop($('#scrollable').height())
-  </script>
-
+    
   <script type="text/babel" src="components/navbar.jsx"></script>
   <script type="text/babel" src="components/songform.jsx"></script>
   <script type="text/babel" src="components/songlist.jsx"></script>
   <script type="text/babel" src="components/currentsong.jsx"></script>
   <script type="text/babel" src="components/comments.jsx"></script>
   <script type="text/babel" src="components/user.jsx"></script>
-  <script type="text/babel" src="components/messageadmin.jsx"></script>
+
   <script type="text/babel" src="components/app.jsx"></script>
   <script type="text/babel" src="data.jsx"></script>
 

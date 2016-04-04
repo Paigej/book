@@ -19,7 +19,7 @@ Jukebox
 ​
 * What collaborative activity can people do together using your app?
 ​
-Guests at a party or group hangout decide by popular vote what music to listen to. Songs displayed on a Reddit style list where people can add songs and upvote or downvote songs. Highly ranked songs will eventually be played and low ranked songs will eventually be removed by the admin. There is also a discussion forum where people may or post general thoughts about what is being played. An admin is responsible for actually playing the music, selecting the song to play in case of a tie or no votes, and posting on the web app the current song being played and the song that is next up. (In future iterations, some of these things may be automated.)
+Guests at a party or group hangout decide by popular vote what music to listen to. Songs displayed on a Reddit style list where people can add songs and upvote or downvote songs. Highly ranked songs will eventually be played and low ranked songs will eventually be removed by the admin. There is also a discussion forum where people may or post general thoughts about what is being played. An admin is responsible for actually playing the music, selecting the song to play in case of a tie or no votes, and posting on the web app the current song being played and the song that is next up. (In future iterations, some of these things may be automated.) 
 ​
 * What is the ideal number of concurrent users (must be at least 10 but no more than 40)?
 ​
